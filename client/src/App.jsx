@@ -1,14 +1,17 @@
 import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { AppNavbar } from './components/index';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-			Header
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+	render() {
+		return (
+			<div>
+			  <AppNavbar />
+			</div>
+		 );
+	}
 }
 
 export default App;
