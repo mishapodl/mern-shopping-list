@@ -1,0 +1,7 @@
+const ITEMS = {
+	GET_ITEMS: "GET_ITEMS",
+	DELETE_ITEM: "DELETE_ITEM",
+	ADD_ITEM: "ADD_ITEM"
+}
+
+export { ITEMS }
