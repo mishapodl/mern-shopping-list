@@ -1,3 +1,4 @@
-import AppNavbar from './AppNavbar/AppNavbar'
+import AppNavbar from './AppNavbar/AppNavbar';
+import ShoppingList from './ShoppingList/ShoppingList';
 
-export { AppNavbar } 
+export { AppNavbar, ShoppingList }
