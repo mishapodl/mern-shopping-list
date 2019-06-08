@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import './ItemModal.css';
 
+import uuid from 'uuid';
 import {
 	Button,
 	Modal, ModalBody, ModalHeader, 
@@ -10,7 +11,6 @@ import {
 
 import { connect } from 'react-redux'
 import { addItem } from '../../redux/actions/action-items'
-import uuid from 'uuid';
 
 
 class ItemModal extends Component {
@@ -33,7 +33,6 @@ class ItemModal extends Component {
 		e.preventDefault();
 		
 		const newItem = {
-			id: uuid(),
 			name: this.state.name
 		}
 
