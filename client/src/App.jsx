@@ -11,7 +11,7 @@ class App extends React.Component {
 			<div>
 				<AppNavbar />
 				<Container>
-					<ItemModal />
+					{/* <ItemModal /> */}
 					<ShoppingList />
 				</Container>
 			</div>
