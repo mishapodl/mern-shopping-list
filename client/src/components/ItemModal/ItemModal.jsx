@@ -2,7 +2,6 @@
 import React, { Component } from 'react'
 import './ItemModal.css';
 
-import uuid from 'uuid';
 import {
 	Button,
 	Modal, ModalBody, ModalHeader, 
