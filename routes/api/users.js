@@ -9,8 +9,7 @@ const User = require('../../models/User');
 // @desc    Register new user
 // @access  Private
 router.post('/', (req, res) => {
-	res.send('true')
-/* 	const { name, email, password } = req.body
+const { name, email, password } = req.body
 
 	if(!name || !email || !password ) {
 		return res.status(400).json({ msg: 'Invalid form. Try fill out again'})
@@ -42,7 +41,7 @@ router.post('/', (req, res) => {
 						})
 				})
 			})
-	}) */
+	})
 });
 
 module.exports = router;

@@ -5,6 +5,7 @@ const path = require('path');
 const app = express();
 
 //Body
+app.use(express.json());
 
 //DB
 const uri = require('./config/keys').mongoURI;
