@@ -3,10 +3,12 @@ import { combineReducers } from 'redux'
 
 import reducerItems from './reducer-items'
 import reducerUser from './reducer-user'
+import reducerError from './reducer-error'
 
 const rootReducer = combineReducers({
 	items: reducerItems,
-	users: reducerUser
+	error: reducerError,
+	auth: reducerUser
 })
 
 export default rootReducer;
