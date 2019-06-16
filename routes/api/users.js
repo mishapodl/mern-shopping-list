@@ -1,5 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
+const config = require('config')
+const jwt = require('jsonwebtoken')
 const router = express.Router();
 
 // Item Model
@@ -31,13 +33,24 @@ const { name, email, password } = req.body
 					newUser.password = hash
 					newUser.save()
 						.then(user => {
-							res.json({
-								user: {
-									id: user.id,
-									name: user.name,
-									email: user.email
+							jwt.sign(
+								{ id: user.id },
+								config.get('jwtSecret'),
+								{ expiresIn: 3600 },
+								(err, token) => {
+									if(err) throw err;
+									
+									res.json({
+										user: {
+											token,
+											id: user.id,
+											name: user.name,
+											email: user.email
+										}
+									})
 								}
-							})
+							)
+
 						})
 				})
 			})
