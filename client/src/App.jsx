@@ -4,8 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { AppNavbar, ShoppingList, ItemModal } from './components/index';
 import { Container } from 'reactstrap'
 
+import { loadUser } from './redux/actions/action-user'
+import { connect } from 'react-redux'
 
 class App extends React.Component {
+	componentDidMount() {
+		console.log(this.props.loadUser())
+	}
+	
 	render() {
 		return (
 			<div>
@@ -19,4 +25,4 @@ class App extends React.Component {
 	}
 }
 
-export default App;
+export default connect(null, { loadUser })(App);

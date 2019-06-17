@@ -2,8 +2,6 @@
 import React, { Component } from 'react'
 import './ShoppingList.css';
 
-import PropTypes from 'prop-types';
-
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
@@ -12,10 +10,7 @@ import { connect } from 'react-redux'
 
 
 class ShoppingList extends Component {
-	static propTypes = {
-		getItems: PropTypes.func.isRequired,
-		item: PropTypes.object.isRequired,
-	 };
+
 	componentDidMount() {
 		this.props.getItems()
 	}

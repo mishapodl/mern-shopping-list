@@ -1,5 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
+const config = require('config')
+const jwt = require('jsonwebtoken')
 const router = express.Router();
 
 // Item Model
@@ -9,8 +11,7 @@ const User = require('../../models/User');
 // @desc    Register new user
 // @access  Private
 router.post('/', (req, res) => {
-	res.send('true')
-/* 	const { name, email, password } = req.body
+const { name, email, password } = req.body
 
 	if(!name || !email || !password ) {
 		return res.status(400).json({ msg: 'Invalid form. Try fill out again'})
@@ -32,17 +33,28 @@ router.post('/', (req, res) => {
 					newUser.password = hash
 					newUser.save()
 						.then(user => {
-							res.json({
-								user: {
-									id: user.id,
-									name: user.name,
-									email: user.email
+							jwt.sign(
+								{ id: user.id },
+								config.get('jwtSecret'),
+								{ expiresIn: 3600 },
+								(err, token) => {
+									if(err) throw err;
+									
+									res.json({
+										user: {
+											token,
+											id: user.id,
+											name: user.name,
+											email: user.email
+										}
+									})
 								}
-							})
+							)
+
 						})
 				})
 			})
-	}) */
+	})
 });
 
 module.exports = router;
