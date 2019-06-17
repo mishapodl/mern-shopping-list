@@ -23,6 +23,7 @@ function reducerUser (state = inititalState, action) {
 			}
 		case USER.LOGIN_SUCCESS:
 		case USER.REGISTER_SUCCESS:
+			localStorage.setItem('token', action.payload)
 			return {
 				...state,
 				...action.payload,

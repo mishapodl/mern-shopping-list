@@ -4,8 +4,10 @@ import './AppNavbar.css';
 
 import {
 	Collapse, Container,
-	Nav, Navbar, NavbarToggler, NavbarBrand, NavItem, NavLink
+	Nav, Navbar, NavbarToggler, NavbarBrand, NavItem, /* NavLink */
 } from 'reactstrap'
+
+import { RegisterModal } from '../index';
 
 class AppNavbar extends Component {
 	state = {
@@ -28,7 +30,7 @@ class AppNavbar extends Component {
 						<Collapse isOpen={ isOpen } navbar>
 							<Nav className="ml-auto" navbar>
 								<NavItem>
-									<NavLink href="https://github.com/mishapodl">Github</NavLink>
+									<RegisterModal />
 								</NavItem>
 							</Nav>
 						</Collapse>
