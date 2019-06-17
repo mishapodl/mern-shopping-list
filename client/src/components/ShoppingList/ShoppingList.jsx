@@ -5,7 +5,7 @@ import './ShoppingList.css';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
-import { getItems, deleteItem, } from '../../redux/actions/action-items'
+import { deleteItem, getItems } from '../../redux/actions/index'
 import { connect } from 'react-redux'
 
 

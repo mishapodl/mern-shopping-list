@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 
 class App extends React.Component {
 	componentDidMount() {
-		console.log(this.props.loadUser())
+		this.props.loadUser()
 	}
 	
 	render() {

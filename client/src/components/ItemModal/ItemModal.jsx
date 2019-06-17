@@ -9,7 +9,7 @@ import {
 } from 'reactstrap'
 
 import { connect } from 'react-redux'
-import { addItem } from '../../redux/actions/action-items'
+import { addItem } from '../../redux/actions/index'
 
 
 class ItemModal extends Component {
