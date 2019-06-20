@@ -45,6 +45,38 @@ const register = ({ name, email, password }) => dispatch => {
 		})
 }
 
+const login = ({ email, password }) => dispatch => {
+	
+	const config = {
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}
+
+	const body = JSON.stringify({ email, password }) 
+
+	axios.post('/api/auth', body, config)
+		.then(res => {
+			dispatch({
+				type: USER.LOGIN_SUCCESS,
+				payload: res.data
+			})
+		})
+		.catch(err => {
+			dispatch(returnErrors(err.response.data, err.response.status, USER.LOGIN_FAIL));
+			dispatch({
+				type: USER.LOGIN_FAIL
+			})
+		})
+}
+
+const logout = () => {
+	console.log(123)
+	return {
+		type: USER.LOGOUT_SUCCESS
+	}
+}
+
 const tokenConfig = getState => {
 	const token = getState().auth.token
 
@@ -59,4 +91,4 @@ const tokenConfig = getState => {
 
 }
 
-export { loadUser, tokenConfig, register }
+export { loadUser, tokenConfig, register, logout, login }

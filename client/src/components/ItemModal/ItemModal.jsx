@@ -5,7 +5,8 @@ import './ItemModal.css';
 import {
 	Button,
 	Modal, ModalBody, ModalHeader, 
-	FormGroup, Form, Label, Input
+	FormGroup, Form, Label, Input,
+	NavItem
 } from 'reactstrap'
 
 import { connect } from 'react-redux'
@@ -42,13 +43,18 @@ class ItemModal extends Component {
 
 	render() {
 		const { modal } = this.state;
+		const { isAuthenticated } = this.props;
 		return (
 			<div>
-				<Button
-					color="dark"
-					style={{marginBottom: '2rem'}}
-					onClick={this.toggle}
-				>AddItem</Button>
+				{
+					isAuthenticated
+					? <Button
+						color="dark"
+						style={{marginBottom: '2rem'}}
+						onClick={this.toggle}
+					>AddItem</Button>
+					: `Please login for menage items`
+				}
 				<Modal 
 					isOpen={modal}
 					toggle={this.toggle}
@@ -79,7 +85,7 @@ class ItemModal extends Component {
 };
 
 const mapStateToProps = state => ({
-	items: state.items
+	isAuthenticated: state.auth.isAuthenticated
 })
 
 export default connect(mapStateToProps, { addItem })(ItemModal);

@@ -20,7 +20,7 @@ class ShoppingList extends Component {
 	}
 
 	render() {
-		const { items } = this.props.items;
+		const { items: { items }, isAuthenticated } = this.props; 
 		return (
 			<Container>
 				<ListGroup>
@@ -29,14 +29,18 @@ class ShoppingList extends Component {
 							items.map(({ _id, name }) => (
 								<CSSTransition key={_id} timeout={500} classNames="fade">
 									<ListGroupItem>
-										<Button
-											className="remove-btn"
-											color="danger"
-											size="sm"
-											onClick={this.odHandlerDeleteItem.bind(this, _id)}
-										>
-											&times;
-										</Button>
+										{
+											isAuthenticated
+										 ? <Button
+												className="remove-btn"
+												color="danger"
+												size="sm"
+												onClick={ this.odHandlerDeleteItem.bind(this, _id) }
+											>
+												&times;
+											</Button>
+										: null
+										}
 										{ name }
 									</ListGroupItem>
 								</CSSTransition>
@@ -50,7 +54,8 @@ class ShoppingList extends Component {
 };
 
 const mapStateToProps = state => ({
-	items: state.items
+	items: state.items,
+	isAuthenticated: state.auth.isAuthenticated
 })
 
 const mapDispatchToProps = {
